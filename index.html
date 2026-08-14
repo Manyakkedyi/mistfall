@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MFSTD-2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-mode">
+
+    <!-- SIDEBAR -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="https://www.curseforge.com/minecraft/mc-mods/the-void-within" target="_blank">Modlar</a>
+        <a onclick="closeNav(); openAboutModal()">Hakkımızda</a>
+    </div>
+
+    <header>
+        <button class="settings-btn" onclick="openNav()">☰ Menü</button>
+        <h1>Mistfall STUDİOS</h1>
+        <button class="settings-btn" onclick="toggleModal()">⚙️ Ayarlar</button>
+    </header>
+
+    <!-- 1. Kutu -->
+    <div class="container">
+        <h2>Mistfall Studios</h2>
+        <p>Minecraft Korku ve Macera modları üreten bir studio! All rights reserved 2026</p>
+    </div>
+
+    <!-- 2. Kutu -->
+    <div class="container">
+        <h2>Projects and links</h2>
+        <div>
+            <span class="stats-badge">🔥 30+ İndirme Ve daha fazla update hazırlanıyor!</span>
+        </div>
+        <div>
+            <span class="stats-badge">Hedef 1K indirme</span>
+        </div>
+        <div class="btn-group">
+            <a href="https://www.curseforge.com/minecraft/mc-mods/the-void-within" target="_blank" class="btn btn-mod">Modu İndir</a>
+            <a href="https://discord.gg/QrS32yJbg" target="_blank" class="btn btn-discord">Discord</a>
+            <a href="https://www.youtube.com/@MCDVDSTUDİO" target="_blank" class="btn btn-youtube">YouTube</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Mistfall Studios. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Ayarlar Paneli -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <button class="close-x-btn" onclick="toggleModal()">×</button>
+            <h3>Site Ayarları</h3>
+            <div class="setting-item">
+                <span>Tema Modu</span>
+                <button class="settings-btn" onclick="toggleTheme()" id="themeBtn">🌙 Mod</button>
+            </div>
+            <div class="setting-item">
+                <span>Buton Rengi</span>
+                <input type="color" id="colorPicker" value="#f97316" onchange="changeColor(this.value)" style="border:none; width:40px; height:35px; border-radius:8px; cursor:pointer; background:none;">
+            </div>
+            <button class="close-modal" onclick="toggleModal()">Kapat</button>
+        </div>
+    </div>
+
+    <!-- Hakkımızda Modalı -->
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <button class="close-x-btn" onclick="closeAboutModal()">×</button>
+            <h3>Mistfall Studios 2026</h3>
+            <p>Minecraft korku ve macera modları üreten bir Studio</p>
+            <button class="close-modal" onclick="closeAboutModal()">Kapat</button>
+        </div>
+    </div>
+
+    <script>
+        function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
+        function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
+
+        function toggleModal() {
+            let modal = document.getElementById("settingsModal");
+            modal.style.display = (modal.style.display === "flex") ? "none" : "flex";
+        }
+
+        function openAboutModal() {
+            document.getElementById("aboutModal").style.display = "flex";
+        }
+        function closeAboutModal() {
+            document.getElementById("aboutModal").style.display = "none";
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle("light-mode");
+            let btn = document.getElementById("themeBtn");
+            btn.innerText = document.body.classList.contains("light-mode") ? "🌙 Mod" : "☀️ Mod";
+        }
+        function changeColor(color) {
+            let modBtn = document.querySelector(".btn-mod");
+            if(modBtn) modBtn.style.background = color;
+        }
+    </script>
+</body>
+</html>
